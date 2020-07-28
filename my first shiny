@@ -1,0 +1,36 @@
+My first shiny
+
+library(shiny)
+
+ui <- fluidPage(
+  
+  titlePanel("my first shiny"),
+
+  sidebarLayout(
+  
+     sidebarPanel(
+       
+       sliderInput(inputId = "sayi", label = "birini orneyi secin: ",
+                   min=1, max=50, value = 30)
+     ),
+    
+    mainPanel(
+    plotOutput("histogram")
+
+)
+    
+  )
+)
+
+server <- function(input, output){
+  
+output$histogram <- renderPlot({
+  
+ hist(rnorm(input$sayi)) 
+})
+  
+ }
+
+shinyApp(ui, server)
+
+
