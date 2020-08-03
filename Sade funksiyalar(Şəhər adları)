@@ -1,0 +1,20 @@
+library(shiny)
+
+shinyUI(fluidPage(
+  titlePanel("Demostration of the selectInput UI widget in shiny"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("seher", "Seherini sec", c("Baku", "Sumqayit", "Qebele","Xirdalan", "Fuzuli"), selected = "Sumqayit")
+    ),
+    mainPanel(
+      textOutput("seher")
+    )
+  )))
+  
+  
+  library(shiny)
+
+shinyServer(function(input,output){
+  output$seher <- renderText(input$seher)
+  
+})
